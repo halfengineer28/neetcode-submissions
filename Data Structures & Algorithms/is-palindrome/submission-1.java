@@ -1,24 +1,22 @@
 class Solution {
     public boolean isPalindrome(String s) {
-        int l = 0;
-        int r = s.length()-1;
-        s.toLowerCase();
-        while(l < r){
-            while(l < r && !alphaNum(s.charAt(l))){
-                l++;
+        int start = 0;
+        int end = s.length()-1;
+
+        while (start <= end){
+            while (start <  end && !Character.isLetterOrDigit(s.charAt(start))){
+                start++;
             }
-            while(l < r && !alphaNum(s.charAt(r))){
-                r--;
+            while (start < end && !Character.isLetterOrDigit(s.charAt(end))){
+                end--;
             }
-            if(Character.toLowerCase(s.charAt(l)) != Character.toLowerCase(s.charAt(r))){
+
+            if (Character.toLowerCase(s.charAt(start)) != Character.toLowerCase(s.charAt(end))){
                 return false;
             }
-            l++;
-            r--;
+            start++;
+            end--;
         }
         return true;
-    }
-    public boolean alphaNum(char c){
-        return ( c >= 'A' && c <= 'Z'|| c >= 'a' && c <= 'z' || c >= '0' && c <= '9');
     }
 }
